@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style> 
+body{
+	margin:0;
+	padding:0;
+        font-size:20px;
+}
+.box{position:relative;width:600px;height:400px;overflow:hidden;margin:0 auto;}
+.danmu{
+position: absolute;
+left:-200px;
+animation:myfirst 5s linear ;
+-moz-animation:myfirst 5s linear ; /* Firefox */
+-webkit-animation:myfirst 5s linear; /* Safari and Chrome */
+-o-animation:myfirst 5s linear; /* Opera */
+}
+
+@keyframes myfirst
+{
+0%   { left:600px; }
+100% {left:-200px; }
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+0%   { left:600px; }
+100%  {left:-200px; }
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+0%    { left:600px; }
+100% {left:-200px; }
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+0%    { left:600px; }
+100% {left:-200px; }
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+
+	
+
+</div>
+
+
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script>
+var time=Math.random()*100;
+var old=5000;
+var now=0;
+function txt(index,top) {
+	return(
+'<div class="danmu"  style="top:'+top+'px;" num-n="'+index+'">6666</div>'
+		)
+}
+
+setInterval(function(){
+     var to=parseInt(Math.random()*500) ;
+     old=old+parseInt(time);
+     var  txtt=txt(old,to);
+     $(".box").append(txtt);
+     now=now+parseInt(time);
+       time=Math.random()*100;
+     var a=document.getElementsByClassName("danmu");
+        temp=a[0];
+         while(parseInt(temp.getAttribute("num-n"))-now<0){
+            $(temp).remove();
+            var a=document.getElementsByClassName("danmu");
+            temp=a[0];
+        }
+
+},time);
+﻿
+// $(".danmu").on("webkitAnimationEnd", function(e){
+//  		target=e.target;
+//  		debugger
+//  		$(target).remove();
+//  });
+// $(".danmu").on("transitionend", function(e){
+//  		target=e.target;
+//  		debugger
+//  		$(target).remove();
+//  });
+ // document.getElementById("myDIV").addEventListener("transitionend", function(e){
+ // 		target=e.target;
+ // 		$(target).remove();
+ // });
+// var a=$(".danmu")[0]
+// $(a).one("webkitTransitionEnd otransitionend transitionend",function(){
+//            alert(0);
+//            $(".danmu")[0].remove();
+//             a=$(".danmu")[0];
+// })
+</script>
+</html>
